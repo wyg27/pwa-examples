@@ -14,9 +14,10 @@ In this repo, we currently have:
 
 首先，安装 `ws` 这个服务器。运行 `npm install ws`。
 
-然后需要解决自签名证书的问题，否则即便通过命令 `ws --https` 运行了服务器，浏览器也会认为 `https://127.0.0.1:8000` 这样的 URL 不安全。生成自签名证书最简便的办法是利用 [https://github.com/FiloSottile/mkcert/releases/tag/v1.4.4](https://github.com/FiloSottile/mkcert) 这个 Go 编写的工具，直接下载它的二进制版本。可以参考教程 [https://blog.dteam.top/posts/2019-04/%E6%9C%AC%E5%9C%B0https%E5%BF%AB%E9%80%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88mkcert.html](本地https快速解决方案——mkcert)，以下简述一下该工具的使用步骤。
+然后需要解决自签名证书的问题，否则即便通过命令 `ws --https` 运行了服务器，浏览器也会认为 `https://127.0.0.1:8000` 这样的 URL 不安全。生成自签名证书最简便的办法是利用 [https://github.com/FiloSottile/mkcert/releases/tag/v1.4.4](https://github.com/FiloSottile/mkcert) 这个 Go 编写的工具，直接下载它的二进制版本。关于该工具的使用可以参考教程 [本地https快速解决方案——mkcert](https://blog.dteam.top/posts/2019-04/%E6%9C%AC%E5%9C%B0https%E5%BF%AB%E9%80%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88mkcert.html)，以下仅提供一个简单的使用步骤。
 
-* 步骤1： 执行 `.\mkcert-v1.4.4-windows-amd64.exe -install`，这一步是在你的系统中导入一个受信任的根证书发行机构（名字是“mkert ***”）。这样，由它生成的自签名证书就会被浏览器信任了。
-* 步骤2：执行 `.\mkcert-v1.4.4-windows-amd64.exe localhost 127.0.0.1`，这会生成自签名证书和 key，名字分别是“localhost+1.pem”和“localhost+1-key.pem”。
+Step 1：执行 `.\mkcert-v1.4.4-windows-amd64.exe -install`，这一步是在你的系统中导入一个受信任的根证书发行机构（名字是“mkert ***”）。这样，由它生成的自签名证书就会被浏览器信任了。
+
+Step 2：执行 `.\mkcert-v1.4.4-windows-amd64.exe localhost 127.0.0.1`，这会生成自签名证书和 key，名字分别是“localhost+1.pem”和“localhost+1-key.pem”。
 
 证书就绪之后，在代码的根目录下执行 `ws --https --cert localhost+1.pem --key localhost+1-key.pem` 就可以了。如果不出意外，访问 `https://127.0.0.1:8000` 时就会看到它被浏览器信任了。
