@@ -10,6 +10,10 @@ In this repo, we currently have:
 
 * [js13kpwa](js13kpwa): A list of A-Frame entries submitted to the js13kGames 2017 competition, used as an example for the MDN articles about Progressive Web Apps. The js13kPWA have the App Shell structure, works offline with the Service Worker, is installable thanks to the Manifest file and Add to Homescreen feature, and is re-engageable by using Notifications and Push. [See it live here](https://mdn.github.io/pwa-examples/js13kpwa/).
 
+## MDN Tutorial
+
+https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps/Tutorials/CycleTracker
+
 ## 如何在 Windows 下设置本地开发环境
 
 首先，安装 `ws` 这个服务器。运行 `npm install ws`。
